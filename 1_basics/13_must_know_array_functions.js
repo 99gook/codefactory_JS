@@ -144,14 +144,30 @@ console.log(numbers.filter((x) => x % 2 === 0));
 // find() -> 필터를 하는데, 해당하는 첫번째 값만 리턴됨
 console.log(numbers.find((x) => x % 2 === 0));
 
-// findIndex()
+// findIndex() -> 해당하는 index를 리턴
 console.log(numbers.findIndex((x) => x % 2 === 0));
 
-// reduce() -> 해당하는 index를 리턴
+// reduce() 
 console.log(numbers.reduce((p, n) => p + n, 0));
 
-
-//일단 여기까지 푸쉬 ---3시간 24분부터
+/**
+ * 1. 초기값인 0이 p에 입력된다.
+ * 2. numbers array의 첫번째 값인 1이 n에 입력된다.
+ * 3. p + n 즉, 0 + 1의 결과값인 1이 반환된다.
+ * 4. 3에서 반환하는 값(1)이 p에 입력된다.
+ * 5. array의 두번째 값인 8이 n에 입력된다.
+ * 6. p + n 즉, 1 + 8의 결과값인 9가 반환된다
+ * 7. 6에서 반환한 값(9)가 p에 입력된다.
+ * 8. numbers 리스트의 모든 값들을 다 순회할때까지 반복
+ * 결국 모든 값을 다 더한 25가 반환된다.
+ * 
+ * ex) 1,0 -> 1
+ *     1,8 -> 9
+ *     9,7 -> 16
+ *     16,6 -> 22
+ *     22,3 -> 25
+ * 
+ */
 
 // reduce() 퀴즈
 // reduce() 함수를 사용해서 iveMembers 변수에 있는 모든 스트링 값들의
