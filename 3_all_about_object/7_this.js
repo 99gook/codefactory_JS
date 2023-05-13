@@ -4,14 +4,14 @@
  * JS는 Lexical Scope를 사용하기때문에 함수의 상위 스코프가
  * 정의 시점에 평가된다. 
  * 
- * *****하지만 this 키워드는 바인딩이 객체가 생성되는 시점에 결정된다.
+ * *****하지만 this 키워드는 바인딩이 객체가 생성되는 시점에 결정된다.(중요)
  */
 const testFunction = function () {
     return this;
 }
 
 console.log(testFunction());
-console.log(testFunction() === global);
+console.log(testFunction() === global); // true
 
 const yuJin = {
     name: '안유진',
@@ -37,7 +37,7 @@ console.log(yuJin2.sayHello());
 
 Person.prototype.dance = function () {
     function dance2() {
-        return `${this.name}이 춤을춥니다.`;
+        return `${this.name}이 춤을춥니다.`; // 얘는 함수안에 정의 했기 때문에 undefined가 출력됨
     }
 
     return dance2();
@@ -78,8 +78,8 @@ function multiply(x, y, z) {
     return `${this.name} / 결과값 : ${x * y * z}`;
 }
 
-console.log(multiply.call(yuJin3, 3, 4, 5));
-console.log(multiply.apply(yuJin3, [3, 4, 5]));
+console.log(multiply.call(yuJin3, 3, 4, 5)); // 콤마 기준으로 순서대로 입력
+console.log(multiply.apply(yuJin3, [3, 4, 5])); // 하나(array)로 받음
 
 /**
  * bind()
@@ -87,3 +87,8 @@ console.log(multiply.apply(yuJin3, [3, 4, 5]));
 const laterFunc = multiply.bind(yuJin3, 3, 4, 5);
 console.log(laterFunc);
 console.log(laterFunc());
+
+/**
+ * call, apply는 this에 들어갈 놈들을 정해주면 바로 실행되는데
+ * bind는 this에 들어갈 놈들을 정해주는 기능은 같지만 바로 실행되지는 않는 차이가 있다
+ */
