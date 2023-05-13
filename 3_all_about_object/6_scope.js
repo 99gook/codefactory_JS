@@ -19,6 +19,8 @@ function levelOne() {
 
 console.log(numberOne);
 
+// 모든 선언은 가장 가까운 scope에 영향을 받음
+
 function levelOne() {
     var numberOne = 40;
 
@@ -35,7 +37,7 @@ function levelOne() {
 
 levelOne();
 console.log(numberOne);
-// console.log(numberTwo);
+// console.log(numberTwo); -> 하위 scope에는 접근 x
 
 /**
  * JS -> Lexical Scope
@@ -54,7 +56,7 @@ function functionOne() {
     functionTwo();
 }
 
-function functionTwo() {
+function functionTwo() { // Js는 lexical scope 이기 때문에 global scope인 numberThree = 3 에 접근함
     console.log(numberThree);
 }
 
@@ -65,14 +67,14 @@ var i = 999;
 for (var i = 0; i < 10; i++) {
     console.log(i);
 }
-console.log(`i in global scope : ${i}`)
+console.log(`i in global scope : ${i}`) // i 값이 10으로 변경됨
 
 i = 999;
 // block level scope
 for (let i = 0; i < 10; i++) {
     console.log(i);
 }
-console.log(`i in global scope : ${i}`);
+console.log(`i in global scope : ${i}`); // i 갑이 999임
 
 /**
  * var 키워드는 함수 레벨 스코프만 만들어낸다.
